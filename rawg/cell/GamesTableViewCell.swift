@@ -25,12 +25,16 @@ class GamesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with model: Games){
-        self.name.text = model.name
-        let url = model.background_image
-        if let data = try? Data(contentsOf: URL(string: url)!){
-            self.photo.image = UIImage(data: data)
+    func configure(with model: Game){
+        self.name.text = "\(model.name!) \n\(model.released!) - ⭐️ \(model.rating!)/\(model.rating_top!)"
+        
+    
+        DispatchQueue.main.async{
+            if let data = try? Data(contentsOf: URL(string:  model.background_image!)!){
+                       self.photo.image = UIImage(data: data)
         }
+        }
+       
         
     }
 }

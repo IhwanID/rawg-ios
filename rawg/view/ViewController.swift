@@ -10,14 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
     
-    var games = [Games]()
+    var games = [Game]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        loading.startAnimating()
+        loading.isHidden = false
+        tableView.isHidden = true
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -31,13 +35,10 @@ class ViewController: UIViewController {
                     guard let data = data, error == nil else{
                         return
                     }
-                    
-                    //convert
-                    
-                    var result: GamesResponse?
+                    var result: GameResponse?
                     do {
                         print(data.count)
-                        result = try JSONDecoder().decode(GamesResponse.self, from: data)
+                        result = try JSONDecoder().decode(GameResponse.self, from: data)
                         
                     } catch{
                         print("error")
@@ -47,14 +48,17 @@ class ViewController: UIViewController {
                         return
                     }
 
-            print(finalResult.results.count)
-
             self.games.append(contentsOf: finalResult.results)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+            self.loading.stopAnimating()
+            
+            self.tableView.isHidden = false
+            self.loading.isHidden = true
                     
         }).resume()
+        
     }
 
 }
@@ -64,8 +68,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return games.count
     }
     
-
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as! GamesTableViewCell
         cell.configure(with: games[indexPath.row])
@@ -73,10 +75,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         performSegue(withIdentifier: "toDetail", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+         performSegue(withIdentifier: "toDetail", sender: games[indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //
+        if segue.identifier == "toDetail" {
+            guard let object = sender as? Game else { return }
+            let vc = segue.destination as! DetailGamesViewController
+            vc.game = object
+           
+        }
     }
 }
+
