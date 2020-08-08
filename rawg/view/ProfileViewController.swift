@@ -7,24 +7,24 @@
 //
 
 import UIKit
+import SafariServices
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var tweet: UIButton!
+    @IBOutlet weak var bios: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        bios.text = "Hello i'm ihwan from majalengka. i love mobile programming."
+        
+        tweet.titleLabel?.text = "twitter"
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tweetClicked(_ sender: Any) {
+        
+        let vc = SFSafariViewController(url: URL(string: "https://twitter.com/Ihwan_ID")!)
+        present(vc, animated: true)
     }
-    */
-
 }

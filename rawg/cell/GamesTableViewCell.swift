@@ -30,7 +30,7 @@ class GamesTableViewCell: UITableViewCell {
         
     
         DispatchQueue.main.async{
-            if let data = try? Data(contentsOf: URL(string:  model.background_image!)!){
+            if let data = try? Data(contentsOf: URL(string: model.background_image!)!){
                        self.photo.image = UIImage(data: data)
         }
         }
