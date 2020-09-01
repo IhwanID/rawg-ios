@@ -9,42 +9,70 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" rowHeight="216" id="KGk-i7-Jjw" customClass="GamesTableViewCell" customModule="rawg" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="316" height="216"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" rowHeight="301" id="KGk-i7-Jjw" customClass="GamesTableViewCell" customModule="rawg" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="318" height="301"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="316" height="216"/>
+                <rect key="frame" x="0.0" y="0.0" width="318" height="301"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="waC-Zx-VGl">
-                        <rect key="frame" x="16" y="16" width="284" height="150"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="waC-Zx-VGl">
+                        <rect key="frame" x="8" y="8" width="302" height="120"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="150" id="anw-GB-B7V"/>
+                            <constraint firstAttribute="height" constant="120" id="doB-af-qvH"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imr-06-hpL">
-                        <rect key="frame" x="16" y="174" width="284" height="23"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="God Of War" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imr-06-hpL">
+                        <rect key="frame" x="25" y="136" width="269" height="128.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="rating &amp; release date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I46-e7-S8F" userLabel="rating">
+                        <rect key="frame" x="8" y="272.5" width="302" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAK-Gs-bzb">
+                        <rect key="frame" x="8" y="8" width="302" height="128"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="waC-Zx-VGl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2HF-8B-Exm"/>
-                    <constraint firstAttribute="trailing" secondItem="waC-Zx-VGl" secondAttribute="trailing" constant="16" id="ATS-20-xeT"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="imr-06-hpL" secondAttribute="bottom" constant="8" id="Jk8-js-ewN"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="imr-06-hpL" secondAttribute="trailing" id="LTu-0x-z95"/>
-                    <constraint firstItem="waC-Zx-VGl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="bpO-ES-nvO"/>
-                    <constraint firstItem="imr-06-hpL" firstAttribute="top" secondItem="waC-Zx-VGl" secondAttribute="bottom" constant="8" id="eMe-w0-Dat"/>
-                    <constraint firstItem="imr-06-hpL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mDs-uJ-vEk"/>
+                    <constraint firstItem="nAK-Gs-bzb" firstAttribute="height" secondItem="waC-Zx-VGl" secondAttribute="height" multiplier="1.06667" id="4UC-MP-O6I"/>
+                    <constraint firstItem="nAK-Gs-bzb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="6VG-P3-ncQ"/>
+                    <constraint firstItem="waC-Zx-VGl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="8Bf-UG-WgU"/>
+                    <constraint firstItem="nAK-Gs-bzb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="9cH-Ff-Imq"/>
+                    <constraint firstItem="I46-e7-S8F" firstAttribute="top" secondItem="imr-06-hpL" secondAttribute="bottom" constant="8" id="AmU-OQ-lmi"/>
+                    <constraint firstItem="imr-06-hpL" firstAttribute="top" secondItem="waC-Zx-VGl" secondAttribute="bottom" constant="8" id="N9T-Vx-IHa"/>
+                    <constraint firstItem="I46-e7-S8F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Tly-Kg-hP4"/>
+                    <constraint firstAttribute="trailing" secondItem="nAK-Gs-bzb" secondAttribute="trailing" constant="8" id="c0Z-tF-A6b"/>
+                    <constraint firstAttribute="bottom" secondItem="I46-e7-S8F" secondAttribute="bottom" constant="8" id="gqg-Sf-3jB"/>
+                    <constraint firstItem="imr-06-hpL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="9" id="lFu-59-nYU"/>
+                    <constraint firstItem="waC-Zx-VGl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="qW7-rF-Iu4"/>
+                    <constraint firstAttribute="trailing" secondItem="waC-Zx-VGl" secondAttribute="trailing" constant="8" id="rQf-eD-6Zw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="imr-06-hpL" secondAttribute="trailing" constant="8" id="y6e-RF-XQN"/>
+                    <constraint firstAttribute="trailing" secondItem="I46-e7-S8F" secondAttribute="trailing" constant="8" id="yFe-0R-oXs"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="name" destination="imr-06-hpL" id="Mol-Pe-4PT"/>
                 <outlet property="photo" destination="waC-Zx-VGl" id="DG5-NH-7wQ"/>
+                <outlet property="rating" destination="I46-e7-S8F" id="Fqy-Mt-4B7"/>
+                <outlet property="shimmerView" destination="nAK-Gs-bzb" id="c3f-cg-n4B"/>
             </connections>
-            <point key="canvasLocation" x="139.13043478260872" y="184.82142857142856"/>
+            <point key="canvasLocation" x="137.68115942028987" y="213.28125"/>
         </tableViewCell>
     </objects>
 </document>

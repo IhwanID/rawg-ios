@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="MCb-gJ-sG2">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="MCb-gJ-sG2">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RJd-Hh-ChM">
                                 <rect key="frame" x="0.0" y="140" width="414" height="722"/>
@@ -183,6 +183,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vjE-Hy-kuC">
+                                <rect key="frame" x="197" y="159" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -190,6 +193,8 @@
                             <constraint firstItem="qcP-ku-DzI" firstAttribute="trailing" secondItem="Efp-nv-WWQ" secondAttribute="trailing" constant="16" id="2gV-rB-I36"/>
                             <constraint firstItem="bAU-KQ-uDe" firstAttribute="leading" secondItem="qcP-ku-DzI" secondAttribute="leading" constant="16" id="60P-3b-RgV"/>
                             <constraint firstItem="2Sm-cr-TZE" firstAttribute="top" secondItem="bAU-KQ-uDe" secondAttribute="bottom" constant="16" id="Bpr-DJ-Kfh"/>
+                            <constraint firstItem="vjE-Hy-kuC" firstAttribute="centerX" secondItem="bAU-KQ-uDe" secondAttribute="centerX" id="Bq8-Or-KD6"/>
+                            <constraint firstItem="vjE-Hy-kuC" firstAttribute="centerY" secondItem="bAU-KQ-uDe" secondAttribute="centerY" id="MbY-DQ-E4U"/>
                             <constraint firstItem="Efp-nv-WWQ" firstAttribute="leading" secondItem="qcP-ku-DzI" secondAttribute="leading" constant="16" id="dxD-Zn-4ya"/>
                             <constraint firstItem="qcP-ku-DzI" firstAttribute="trailing" secondItem="bAU-KQ-uDe" secondAttribute="trailing" constant="16" id="hfz-Sa-LhP"/>
                             <constraint firstItem="bAU-KQ-uDe" firstAttribute="top" secondItem="qcP-ku-DzI" secondAttribute="top" constant="16" id="iWL-kT-NVb"/>
@@ -201,6 +206,7 @@
                     <navigationItem key="navigationItem" title="Detail" largeTitleDisplayMode="never" id="CGI-jH-9s6"/>
                     <connections>
                         <outlet property="gameTitle" destination="2Sm-cr-TZE" id="BUj-Jh-MdT"/>
+                        <outlet property="indicator" destination="vjE-Hy-kuC" id="j5W-KG-QGY"/>
                         <outlet property="name" destination="Efp-nv-WWQ" id="ZNi-WP-5CC"/>
                         <outlet property="photo" destination="bAU-KQ-uDe" id="hwE-xX-EBQ"/>
                     </connections>

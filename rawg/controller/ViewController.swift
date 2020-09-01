@@ -9,58 +9,59 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var presenter: PhotoPresenter!
     
     var games = [Game]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loading.startAnimating()
-        loading.isHidden = false
-        tableView.isHidden = true
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "GamesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCell")
-        loadGames()
+        presenter = PhotoPresenter()
+        presenter.getAllGame(service: GamesService(), controller: self)
     }
+    
+    
+    
+}
 
-    func loadGames(){
-        URLSession.shared.dataTask(with: URL(string: "https://api.rawg.io/api/games")!, completionHandler: {data, response, error in
-                    
-                    guard let data = data, error == nil else{
-                        return
-                    }
-                    var result: GameResponse?
-                    do {
-                        print(data.count)
-                        result = try JSONDecoder().decode(GameResponse.self, from: data)
-                        
-                    } catch{
-                        print("error")
-                    }
-                    
-                    guard let finalResult = result else{
-                        return
-                    }
-
-            self.games.append(contentsOf: finalResult.results)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+extension ViewController: PhotoProtocol{
+    func startLoading() {
+        loading.startAnimating()
+        loading.isHidden = false
+        tableView.isHidden = true
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async {
             self.loading.stopAnimating()
-            
             self.tableView.isHidden = false
             self.loading.isHidden = true
-                    
-        }).resume()
+        }
         
     }
-
+    
+    func setPhoto(model: [Game]) {
+        DispatchQueue.main.async {
+            self.games = model
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    func errorPhoto(error: Error) {
+        print(error)
+    }
+    
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -69,14 +70,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as! GamesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as! GamesTableViewCell
         cell.configure(with: games[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-         performSegue(withIdentifier: "toDetail", sender: games[indexPath.row])
+        performSegue(withIdentifier: "toDetail", sender: games[indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -84,7 +85,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             guard let object = sender as? Game else { return }
             let vc = segue.destination as! DetailGamesViewController
             vc.game = object
-           
+            
         }
     }
 }

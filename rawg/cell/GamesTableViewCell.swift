@@ -7,34 +7,33 @@
 //
 
 import UIKit
+import Kingfisher
+import SkeletonView
 
 class GamesTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var photo: UIImageView!
     
+    @IBOutlet weak var rating: UILabel!
+    
+    @IBOutlet weak var shimmerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
     func configure(with model: Game){
-        self.name.text = "\(model.name!) \n\(model.released!) - ⭐️ \(model.rating!)/\(model.rating_top!)"
-        
-    
-        DispatchQueue.main.async{
-            if let data = try? Data(contentsOf: URL(string: model.background_image!)!){
-                       self.photo.image = UIImage(data: data)
-        }
-        }
-       
+        self.shimmerView.startSkeletonAnimation()
+        self.photo.kf.setImage(with: URL(string: model.background_image!)!)
+        self.name.text = "\(model.name!)"
+        self.rating.text = "\(model.released!) - ⭐️ \(model.rating!)/\(model.rating_top!)"
         
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,28 @@
 		609888DA24D06C4500567471 /* DetailGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609888D924D06C4500567471 /* DetailGamesViewController.swift */; };
 		609888DC24D06F0900567471 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609888DB24D06F0900567471 /* ProfileViewController.swift */; };
 		60D73AFB24DE895B00A6C7B8 /* SearchGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D73AFA24DE895B00A6C7B8 /* SearchGameViewController.swift */; };
+		60F229C324F0101100CC82F6 /* KingfisherDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 60F229C224F0101100CC82F6 /* KingfisherDynamic */; };
+		60F229C424F0101100CC82F6 /* KingfisherDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 60F229C224F0101100CC82F6 /* KingfisherDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		60F229C624F0101100CC82F6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 60F229C524F0101100CC82F6 /* Kingfisher */; };
+		60F229C824F0101100CC82F6 /* KingfisherStatic in Frameworks */ = {isa = PBXBuildFile; productRef = 60F229C724F0101100CC82F6 /* KingfisherStatic */; };
+		60F229CB24F010D500CC82F6 /* PhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F229CA24F010D500CC82F6 /* PhotoPresenter.swift */; };
+		60F229CD24F011B300CC82F6 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F229CC24F011B300CC82F6 /* Services.swift */; };
+		60F229D024F0301D00CC82F6 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 60F229CF24F0301D00CC82F6 /* SkeletonView */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60F229C924F0101100CC82F6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				60F229C424F0101100CC82F6 /* KingfisherDynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6066A5EC24BEE5A70018D6E3 /* rawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +57,8 @@
 		609888D924D06C4500567471 /* DetailGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGamesViewController.swift; sourceTree = "<group>"; };
 		609888DB24D06F0900567471 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		60D73AFA24DE895B00A6C7B8 /* SearchGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGameViewController.swift; sourceTree = "<group>"; };
+		60F229CA24F010D500CC82F6 /* PhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPresenter.swift; sourceTree = "<group>"; };
+		60F229CC24F011B300CC82F6 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +66,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F229D024F0301D00CC82F6 /* SkeletonView in Frameworks */,
+				60F229C624F0101100CC82F6 /* Kingfisher in Frameworks */,
+				60F229C324F0101100CC82F6 /* KingfisherDynamic in Frameworks */,
+				60F229C824F0101100CC82F6 /* KingfisherStatic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,15 +95,17 @@
 		6066A5EE24BEE5A70018D6E3 /* rawg */ = {
 			isa = PBXGroup;
 			children = (
+				60AC254924F97BC900F3CD34 /* controller */,
 				609888D824D06C1100567471 /* view */,
 				609888D324D0271800567471 /* cell */,
 				609888D024CF3C6A00567471 /* model */,
 				6066A5EF24BEE5A70018D6E3 /* AppDelegate.swift */,
+				60F229CC24F011B300CC82F6 /* Services.swift */,
 				6066A5F124BEE5A70018D6E3 /* SceneDelegate.swift */,
-				6066A5F524BEE5A70018D6E3 /* Main.storyboard */,
 				6066A5F824BEE5A90018D6E3 /* Assets.xcassets */,
 				6066A5FA24BEE5A90018D6E3 /* LaunchScreen.storyboard */,
 				6066A5FD24BEE5A90018D6E3 /* Info.plist */,
+				60F229CA24F010D500CC82F6 /* PhotoPresenter.swift */,
 			);
 			path = rawg;
 			sourceTree = "<group>";
@@ -101,12 +130,20 @@
 		609888D824D06C1100567471 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				6066A5F524BEE5A70018D6E3 /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		60AC254924F97BC900F3CD34 /* controller */ = {
+			isa = PBXGroup;
+			children = (
 				6066A5F324BEE5A70018D6E3 /* ViewController.swift */,
 				609888D924D06C4500567471 /* DetailGamesViewController.swift */,
 				609888DB24D06F0900567471 /* ProfileViewController.swift */,
 				60D73AFA24DE895B00A6C7B8 /* SearchGameViewController.swift */,
 			);
-			path = view;
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,12 +156,19 @@
 				6066A5E824BEE5A70018D6E3 /* Sources */,
 				6066A5E924BEE5A70018D6E3 /* Frameworks */,
 				6066A5EA24BEE5A70018D6E3 /* Resources */,
+				60F229C924F0101100CC82F6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = rawg;
+			packageProductDependencies = (
+				60F229C224F0101100CC82F6 /* KingfisherDynamic */,
+				60F229C524F0101100CC82F6 /* Kingfisher */,
+				60F229C724F0101100CC82F6 /* KingfisherStatic */,
+				60F229CF24F0301D00CC82F6 /* SkeletonView */,
+			);
 			productName = rawg;
 			productReference = 6066A5EC24BEE5A70018D6E3 /* rawg.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +197,10 @@
 				Base,
 			);
 			mainGroup = 6066A5E324BEE5A70018D6E3;
+			packageReferences = (
+				60F229C124F0101100CC82F6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				60F229CE24F0301D00CC82F6 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+			);
 			productRefGroup = 6066A5ED24BEE5A70018D6E3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -186,9 +234,11 @@
 				6066A5F024BEE5A70018D6E3 /* AppDelegate.swift in Sources */,
 				6066A5F224BEE5A70018D6E3 /* SceneDelegate.swift in Sources */,
 				609888D624D0274D00567471 /* GamesTableViewCell.swift in Sources */,
+				60F229CD24F011B300CC82F6 /* Services.swift in Sources */,
 				609888DC24D06F0900567471 /* ProfileViewController.swift in Sources */,
 				609888D224CF3C8F00567471 /* Game.swift in Sources */,
 				609888DA24D06C4500567471 /* DetailGamesViewController.swift in Sources */,
+				60F229CB24F010D500CC82F6 /* PhotoPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +436,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		60F229C124F0101100CC82F6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.0;
+			};
+		};
+		60F229CE24F0301D00CC82F6 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		60F229C224F0101100CC82F6 /* KingfisherDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60F229C124F0101100CC82F6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherDynamic;
+		};
+		60F229C524F0101100CC82F6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60F229C124F0101100CC82F6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		60F229C724F0101100CC82F6 /* KingfisherStatic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60F229C124F0101100CC82F6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherStatic;
+		};
+		60F229CF24F0301D00CC82F6 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60F229CE24F0301D00CC82F6 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6066A5E424BEE5A70018D6E3 /* Project object */;
 }
