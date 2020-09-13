@@ -17,8 +17,7 @@ class GamesTableViewCell: UITableViewCell {
     @IBOutlet weak var photo: UIImageView!
     
     @IBOutlet weak var rating: UILabel!
-    
-    @IBOutlet weak var shimmerView: UIView!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,10 +29,9 @@ class GamesTableViewCell: UITableViewCell {
     }
     
     func configure(with model: Game){
-        self.shimmerView.startSkeletonAnimation()
         self.photo.kf.setImage(with: URL(string: model.background_image!)!)
         self.name.text = "\(model.name!)"
-        self.rating.text = "\(model.released!) - ⭐️ \(model.rating!)/\(model.rating_top!)"
+        self.rating.text = "🗓\(model.released!)\n⭐️ \(model.rating!)/\(model.rating_top!)"
         
     }
 }
