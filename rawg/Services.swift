@@ -9,7 +9,11 @@
 import Foundation
 
 class GamesService{
-    
+
+    func searchGames(completion: @escaping ([Game], Error?) -> ()){
+
+    }
+
     func loadGames(completion: @escaping ([Game], Error?) -> ()){
         URLSession.shared.dataTask(with: URL(string: "https://api.rawg.io/api/games")!, completionHandler: {data, response, error in
             

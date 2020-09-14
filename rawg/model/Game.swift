@@ -24,3 +24,19 @@ struct Game: Codable {
     let reviews_count: Int?
     let playtime: Int?
 }
+
+struct Ratings: Codable{
+    let id: Int?
+    let title: String?
+    let count: Int?
+    let percent: Double?
+}
+
+struct Platforms: Codable{
+    let released_at: String?
+}
+
+struct Genres: Codable{
+    let id: Int?
+    let name: String?
+}

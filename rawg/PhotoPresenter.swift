@@ -15,9 +15,6 @@ class PhotoPresenter{
             controller.stopLoading()
             if(error != nil){
                 controller.errorPhoto(error: error as! Error)
-
-                
-                
             }else{
                 controller.setPhoto(model: game)
             }

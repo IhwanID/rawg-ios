@@ -8,23 +8,37 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
     
-    @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    var loading = UIActivityIndicatorView()
     
     @IBOutlet weak var tableView: UITableView!
     
     var presenter: PhotoPresenter!
     
     var games = [Game]()
-    
+
+    func activityIndicator() {
+        loading = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        loading.style = UIActivityIndicatorView.Style.gray
+        loading.center = self.view.center
+        self.view.addSubview(loading)
+    }
+    func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
+    {
+        print(searchBar.text)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activityIndicator()
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "GamesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCell")
+
+        searchBar.showsScopeBar = true
+        searchBar.delegate = self
         presenter = PhotoPresenter()
         presenter.getAllGame(service: GamesService(), controller: self)
     }
