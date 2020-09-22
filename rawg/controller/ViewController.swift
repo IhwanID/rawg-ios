@@ -15,7 +15,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var presenter: PhotoPresenter!
+    var presenter: GamePresenter!
     
     var games = [Game]()
 
@@ -25,9 +25,12 @@ class ViewController: UIViewController, UISearchBarDelegate {
         loading.center = self.view.center
         self.view.addSubview(loading)
     }
+
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
     {
-        print(searchBar.text)
+        searchBar.resignFirstResponder()
+        presenter.searchGame(searchText: searchBar.text!,service: GamesService(), controller: self)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +42,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
         searchBar.showsScopeBar = true
         searchBar.delegate = self
-        presenter = PhotoPresenter()
+        presenter = GamePresenter()
         presenter.getAllGame(service: GamesService(), controller: self)
     }
     
@@ -47,11 +50,12 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
 }
 
-extension ViewController: PhotoProtocol{
+extension ViewController: GameProtocol{
     func startLoading() {
         loading.startAnimating()
         loading.isHidden = false
         tableView.isHidden = true
+        self.games.removeAll()
     }
     
     func stopLoading() {
@@ -65,6 +69,7 @@ extension ViewController: PhotoProtocol{
     
     func setPhoto(model: [Game]) {
         DispatchQueue.main.async {
+
             self.games = model
             self.tableView.reloadData()
         }
@@ -79,6 +84,8 @@ extension ViewController: PhotoProtocol{
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+
+    //TODO: if result 0
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return games.count
     }

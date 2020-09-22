@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import SkeletonView
 
 class GamesTableViewCell: UITableViewCell {
     
@@ -29,9 +28,23 @@ class GamesTableViewCell: UITableViewCell {
     }
     
     func configure(with model: Game){
-        self.photo.kf.setImage(with: URL(string: model.background_image!)!)
+        if(model.background_image != nil){
+            let url = URL(string: model.background_image!)
+                   let processor = DownsamplingImageProcessor(size: photo.bounds.size)
+                    |> RoundCornerImageProcessor(cornerRadius: 20)
+                  self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"),
+                      options: [
+                          .processor(processor),
+                          .scaleFactor(UIScreen.main.scale),
+                          .transition(.fade(1)),
+                          .cacheOriginalImage
+                      ])
+        }else{
+self.photo.image = UIImage(named: "placeholder")
+        }
+
         self.name.text = "\(model.name!)"
-        self.rating.text = "🗓\(model.released!)\n⭐️ \(model.rating!)/\(model.rating_top!)"
+        self.rating.text = "🗓\(model.released ?? "-")\n⭐️ \(model.rating ?? 0)/\(model.rating_top ?? 0)"
         
     }
 }

@@ -36,11 +36,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Rawg" id="JBd-Ac-7b9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="l3i-sI-olu"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="SIu-DY-m9X">
-                            <connections>
-                                <segue destination="c84-mQ-SmC" kind="show" id="HvD-Ns-x46"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Profile" image="person.fill" catalog="system" id="1A4-Oy-0JF">
                             <connections>
                                 <segue destination="bst-L8-iF3" kind="show" id="SbA-3L-FhC"/>
@@ -56,43 +51,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
-        </scene>
-        <!--Search-->
-        <scene sceneID="ePN-mw-rmR">
-            <objects>
-                <viewController id="c84-mQ-SmC" customClass="SearchGameViewController" customModule="rawg" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nhL-jv-5lg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="skL-Tp-fho">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="dul-O6-flO">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="skL-Tp-fho" firstAttribute="top" secondItem="5u4-nv-dgJ" secondAttribute="top" id="DeB-pD-HVz"/>
-                            <constraint firstItem="skL-Tp-fho" firstAttribute="bottom" secondItem="5u4-nv-dgJ" secondAttribute="bottom" id="jRM-Sm-NyT"/>
-                            <constraint firstItem="skL-Tp-fho" firstAttribute="trailing" secondItem="5u4-nv-dgJ" secondAttribute="trailing" id="qUj-gg-fW0"/>
-                            <constraint firstItem="skL-Tp-fho" firstAttribute="leading" secondItem="5u4-nv-dgJ" secondAttribute="leading" id="xVF-iw-Yln"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5u4-nv-dgJ"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Search" id="8Vn-gg-Aba"/>
-                    <connections>
-                        <outlet property="searchBar" destination="dul-O6-flO" id="VhL-uW-MEy"/>
-                        <outlet property="tableView" destination="skL-Tp-fho" id="czM-QP-3zM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ch-Gt-XCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1046.376811594203" y="852.45535714285711"/>
         </scene>
         <!--Profile-->
         <scene sceneID="M4z-sm-Y7S">
@@ -234,7 +192,6 @@
     </scenes>
     <resources>
         <image name="dp" width="1455" height="1426"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>
