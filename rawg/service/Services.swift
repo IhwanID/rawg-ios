@@ -54,7 +54,6 @@ class GamesService{
             }
             var result: GameResponse?
             do {
-                print(data.count)
                 result = try JSONDecoder().decode(GameResponse.self, from: data)
                 
             } catch{

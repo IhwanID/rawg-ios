@@ -37,8 +37,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         activityIndicator()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tableView.register(UINib(nibName: "GamesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCell")
+
 
         searchBar.showsScopeBar = true
         searchBar.delegate = self
@@ -91,7 +90,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as! GamesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as! GameTableViewCell
         cell.configure(with: games[indexPath.row])
         return cell
     }

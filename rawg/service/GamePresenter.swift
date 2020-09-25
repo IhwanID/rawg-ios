@@ -26,10 +26,8 @@ class GamePresenter{
         service.searchGames(searchtext: searchText) { (game, error) in
          controller.stopLoading()
             if(error != nil){
-                print("error \(error)")
                // controller.errorPhoto(error: error as! Error)
             }else{
-                print(game)
                controller.setPhoto(model: game)
             }
         }
