@@ -22,17 +22,9 @@ class GameTableViewCell: UITableViewCell {
     func configure(with model: Game){
         if(model.background_image != nil){
             let url = URL(string: model.background_image!)
-                   let processor = DownsamplingImageProcessor(size: photo.bounds.size)
-                    |> RoundCornerImageProcessor(cornerRadius: 20)
-                  self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"),
-                      options: [
-                          .processor(processor),
-                          .scaleFactor(UIScreen.main.scale),
-                          .transition(.fade(1)),
-                          .cacheOriginalImage
-                      ])
+            self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"))
         }else{
-self.photo.image = UIImage(named: "placeholder")
+            self.photo.image = UIImage(named: "placeholder")
         }
 
         self.name.text = "\(model.name!)"

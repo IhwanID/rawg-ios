@@ -12,7 +12,6 @@ class GamesService{
 
     func searchGames(searchtext: String?,completion: @escaping ([Game], Error?) -> ()){
 
-
         guard let text = searchtext, !text.isEmpty else {
             return
         }
@@ -48,10 +47,11 @@ class GamesService{
 
     func loadGames(completion: @escaping ([Game], Error?) -> ()){
         URLSession.shared.dataTask(with: URL(string: "https://api.rawg.io/api/games")!, completionHandler: {data, response, error in
-            
             guard let data = data, error == nil else{
                 return
             }
+
+            print(data)
             var result: GameResponse?
             do {
                 result = try JSONDecoder().decode(GameResponse.self, from: data)

@@ -21,7 +21,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
     func activityIndicator() {
         loading = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        loading.style = UIActivityIndicatorView.Style.gray
+        loading.style = UIActivityIndicatorView.Style.large
         loading.center = self.view.center
         self.view.addSubview(loading)
     }
@@ -32,21 +32,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
         presenter.searchGame(searchText: searchBar.text!,service: GamesService(), controller: self)
 
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator()
         tableView.delegate = self
         tableView.dataSource = self
 
-
         searchBar.showsScopeBar = true
         searchBar.delegate = self
         presenter = GamePresenter()
         presenter.getAllGame(service: GamesService(), controller: self)
     }
-    
-    
-    
 }
 
 extension ViewController: GameProtocol{
@@ -84,8 +81,14 @@ extension ViewController: GameProtocol{
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
-    //TODO: if result 0
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        if games.count == 0 {
+            self.tableView.setEmptyMessage("No Game")
+        } else {
+            self.tableView.restore()
+        }
+
         return games.count
     }
     
@@ -108,5 +111,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
     }
+
 }
 
+extension UITableView{
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
+    }
+}
