@@ -11,8 +11,7 @@ import UIKit
 class DetailGamesViewController: UIViewController {
     
     @IBOutlet weak var photo: UIImageView!
-    
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+
     @IBOutlet weak var name: UILabel!
     var game: Game?
     
@@ -20,32 +19,22 @@ class DetailGamesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.indicator.isHidden = false
-        self.indicator.startAnimating()
-        self.photo.isHidden = true
+        self.photo.makeRounded()
         if let result = game {
             
             gameTitle.text = result.name
-            name.text = "\(result.released!) - ⭐️ \(result.rating!)/\(result.rating_top!)"
-            
-            DispatchQueue.global().async{
-                if let data = try? Data(contentsOf: URL(string: result.background_image!)!){
-                    DispatchQueue.main.async {
-                        self.photo.image = UIImage(data: data)
-                        self.photo.isHidden = false
-                        self.indicator.isHidden = true
-                        self.indicator.stopAnimating()
-                    }
-                    
-                }
+            name.text = "\(result.released!) - ⭐️ \(result.rating!)/\(result.rating_top!) \n"
+
+            if(result.background_image != nil){
+                let url = URL(string: result.background_image!)
+                self.photo.makeRounded()
+                self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"))
+            }else{
+                self.photo.image = UIImage(named: "placeholder")
             }
-            
-            
+
+           
         }
-        
     }
-    
-    
-    
 }
 

@@ -70,4 +70,29 @@ class GamesService{
         }).resume()
         
     }
+
+    func fetchDetailGame(id: Int,completion: @escaping (Game, Error?) -> () ){
+        URLSession.shared.dataTask(with: URL(string: "https://api.rawg.io/api/games/\(id)")!, completionHandler: {data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+
+            print(data)
+            var result: Game?
+            do {
+                result = try JSONDecoder().decode(Game.self, from: data)
+
+            } catch{
+                print("error")
+            }
+
+            guard let finalResult = result else{
+                return
+            }
+
+            completion(finalResult, error)
+
+
+        }).resume()
+    }
 }
