@@ -19,18 +19,16 @@ class ViewController: UIViewController, UISearchBarDelegate {
     
     var games = [Game]()
 
-    func activityIndicator() {
+    func activityIndicator(){
         loading = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         loading.style = UIActivityIndicatorView.Style.large
         loading.center = self.view.center
         self.view.addSubview(loading)
     }
 
-    func searchBarSearchButtonClicked( _ searchBar: UISearchBar)
-    {
+    func searchBarSearchButtonClicked( _ searchBar: UISearchBar){
         searchBar.resignFirstResponder()
         presenter.searchGame(searchText: searchBar.text!,service: GamesService(), controller: self)
-
     }
     
     override func viewDidLoad() {
@@ -60,16 +58,13 @@ extension ViewController: GameProtocol{
             self.tableView.isHidden = false
             self.loading.isHidden = true
         }
-        
     }
     
     func setPhoto(model: [Game]) {
         DispatchQueue.main.async {
-
             self.games = model
             self.tableView.reloadData()
         }
-        
     }
     
     func errorPhoto(error: Error) {

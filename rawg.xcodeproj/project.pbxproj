@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6023D8A52524EAEE0031316E /* DetailGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6023D8A42524EAEE0031316E /* DetailGamePresenter.swift */; };
 		6066A5F024BEE5A70018D6E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066A5EF24BEE5A70018D6E3 /* AppDelegate.swift */; };
 		6066A5F224BEE5A70018D6E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066A5F124BEE5A70018D6E3 /* SceneDelegate.swift */; };
 		6066A5F424BEE5A70018D6E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066A5F324BEE5A70018D6E3 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6023D8A42524EAEE0031316E /* DetailGamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGamePresenter.swift; sourceTree = "<group>"; };
 		6066A5EC24BEE5A70018D6E3 /* rawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6066A5EF24BEE5A70018D6E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6066A5F124BEE5A70018D6E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				60F229CC24F011B300CC82F6 /* Services.swift */,
 				60F229CA24F010D500CC82F6 /* GamePresenter.swift */,
+				6023D8A42524EAEE0031316E /* DetailGamePresenter.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				6066A5F224BEE5A70018D6E3 /* SceneDelegate.swift in Sources */,
 				60F229CD24F011B300CC82F6 /* Services.swift in Sources */,
 				60BECE1E251DB6A5002FF2DF /* GameTableViewCell.swift in Sources */,
+				6023D8A52524EAEE0031316E /* DetailGamePresenter.swift in Sources */,
 				609888DC24D06F0900567471 /* ProfileViewController.swift in Sources */,
 				609888D224CF3C8F00567471 /* Game.swift in Sources */,
 				609888DA24D06C4500567471 /* DetailGamesViewController.swift in Sources */,

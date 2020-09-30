@@ -15,6 +15,7 @@ struct GameResponse: Codable {
 struct Game: Codable {
     let id: Int?
     let slug: String?
+    let description: String?
     let name: String?
     let released: String?
     let tba: Bool?

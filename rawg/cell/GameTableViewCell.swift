@@ -33,7 +33,7 @@ class GameTableViewCell: UITableViewCell {
 
         let formate = dateFormatter.date(from: model.released ?? "01-01-2001")
         self.name.text = "\(model.name!)"
-        self.rating.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") ⭐️ \(model.rating ?? 0)/\(model.rating_top ?? 0)"
+        self.rating.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(model.rating ?? 0)/\(model.rating_top ?? 0)"
 
     }
 }
@@ -50,7 +50,7 @@ extension UIImageView {
 
     func makeRounded() {
 
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 0
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.cornerRadius = 20

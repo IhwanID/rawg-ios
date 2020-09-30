@@ -51,7 +51,6 @@ class GamesService{
                 return
             }
 
-            print(data)
             var result: GameResponse?
             do {
                 result = try JSONDecoder().decode(GameResponse.self, from: data)
@@ -77,7 +76,6 @@ class GamesService{
                 return
             }
 
-            print(data)
             var result: Game?
             do {
                 result = try JSONDecoder().decode(Game.self, from: data)
