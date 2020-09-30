@@ -64,7 +64,7 @@ extension String {
 extension DetailGamesViewController: DetailGameProtocol{
     func setGame(model: Game) {
         DispatchQueue.main.async {
-            self.descGame.attributedText = model.description?.htmlToAttributedString
+            self.descGame.attributedText = model.description?.htmlToAttributedString 
         }
 
     }
