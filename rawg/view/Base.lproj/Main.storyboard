@@ -91,11 +91,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Rawg" id="JBd-Ac-7b9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="l3i-sI-olu"/>
-                        <barButtonItem key="rightBarButtonItem" title="Profile" image="person.fill" catalog="system" id="1A4-Oy-0JF">
-                            <connections>
-                                <segue destination="bst-L8-iF3" kind="show" id="SbA-3L-FhC"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Profile" image="person.fill" catalog="system" id="1A4-Oy-0JF">
+                                <connections>
+                                    <segue destination="bst-L8-iF3" kind="show" id="SbA-3L-FhC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="heart.circle.fill" catalog="system" id="tYF-47-MNL">
+                                <connections>
+                                    <segue destination="FVy-Cn-FXK" kind="show" id="pIg-a8-guV"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="vRj-HY-Kha" id="NDS-Hc-vUm"/>
@@ -274,9 +281,39 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="EgA-jf-6zq">
+            <objects>
+                <tableViewController id="FVy-Cn-FXK" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qDb-Nj-DPd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cfZ-3N-Iko">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cfZ-3N-Iko" id="9Nn-99-n45">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FVy-Cn-FXK" id="jVJ-SP-ySC"/>
+                            <outlet property="delegate" destination="FVy-Cn-FXK" id="me1-mh-rpB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fAL-hd-s0W"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMV-Ej-4wX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="863"/>
+        </scene>
     </scenes>
     <resources>
         <image name="dp" width="1455" height="1426"/>
+        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
