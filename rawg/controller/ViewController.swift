@@ -138,12 +138,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         {
         case 0:
             cell.configure(with: games[indexPath.row])
-
-            break
+            return cell
         case 1:
             cell.configure(with: favoritesGame[indexPath.row])
             return cell
-            break
 
         default:
             break
@@ -154,14 +152,34 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "toDetail", sender: rowsToDisplay[indexPath.row])
+        switch(segmentedControl.selectedSegmentIndex)
+        {
+        case 0:
+            performSegue(withIdentifier: "toDetail", sender: games[indexPath.row])
+            break
+        case 1:
+            performSegue(withIdentifier: "toDetail", sender: favoritesGame[indexPath.row])
+            break
+
+        default:
+            break
+
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail" {
-            guard let object = sender as? Game else { return }
-            let vc = segue.destination as! DetailGamesViewController
-            vc.game = object
+            if(sender is Game){
+                guard let object = sender as? Game else { return }
+                let vc = segue.destination as! DetailGamesViewController
+                vc.game = object
+            }else{
+                guard let object = sender as? GameObject else { return }
+                let vc = segue.destination as! DetailGamesViewController
+                vc.gameObject = object
+            }
+           
             
         }
     }

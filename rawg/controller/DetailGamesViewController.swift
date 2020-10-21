@@ -16,6 +16,8 @@ class DetailGamesViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     var game: Game?
     
+    var gameObject: GameObject?
+    
     @IBOutlet weak var gameTitle: UILabel!
 
     @IBOutlet weak var descGame: UILabel!
@@ -31,8 +33,6 @@ class DetailGamesViewController: UIViewController {
             return realm.object(ofType: GameObject.self, forPrimaryKey: id) != nil
     }
 
-    // Returns true or false
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +40,20 @@ class DetailGamesViewController: UIViewController {
         presenter = DetailGamePresenter()
 
         self.photo.makeRounded()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-
-
+        
+        
+        if let fav = gameObject{
+            
+                if(objectExist(id: fav.id)){
+                    favoriteButton.image = UIImage(systemName: "heart.fill")
+                }else{
+                    favoriteButton.image = UIImage(systemName: "heart")
+                }
+            
+            setupLayout(id: fav.id, title: fav.name, released: fav.released, background_image: fav.background_image, rating: fav.rating)
+            
+        }
+        
         if let result = game {
             if let id = result.id{
                 if(objectExist(id: id)){
@@ -52,21 +62,27 @@ class DetailGamesViewController: UIViewController {
                     favoriteButton.image = UIImage(systemName: "heart")
                 }
             }
-
-            gameTitle.text = result.name
-            let formate = dateFormatter.date(from: result.released ?? "01-01-2001")
-            name.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(result.rating ?? 0)/5.0"
-            presenter.getDetailGame(idGame: result.id!, service: GamesService(), controller: self)
-            if(result.background_image != nil){
-                let url = URL(string: result.background_image!)
-                self.photo.makeRounded()
-                self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"))
-            }else{
-                self.photo.image = UIImage(named: "placeholder")
-            }
+        
+            setupLayout(id: result.id!, title: result.name!, released: result.released!, background_image: result.background_image!, rating: result.rating!)
+            
         }
     }
 
+    func setupLayout(id:Int, title: String, released: String, background_image: String, rating: Double){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        gameTitle.text = title
+        let formate = dateFormatter.date(from: released)
+        name.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(rating)/5.0"
+        presenter.getDetailGame(idGame: id, service: GamesService(), controller: self)
+        if(background_image != nil){
+            let url = URL(string: background_image)
+            self.photo.makeRounded()
+            self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"))
+        }else{
+            self.photo.image = UIImage(named: "placeholder")
+        }
+    }
     @IBAction func onFavoriteClicked(_ sender: Any) {
 
         if let game = game {
@@ -76,7 +92,8 @@ class DetailGamesViewController: UIViewController {
                     transaction.add(game)
                     favoriteButton.image = UIImage(systemName: "heart.fill")
                 }else{
-                    //transaction.delete(game)
+                    let objectsToDelete =  realm.objects(GameObject.self).filter("NOT id IN %@", game.id!)
+                    realm.delete(objectsToDelete)
                     favoriteButton.image = UIImage(systemName: "heart")
                 }
             }
