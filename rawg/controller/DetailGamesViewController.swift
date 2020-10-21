@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailGamesViewController: UIViewController {
     
@@ -19,11 +20,23 @@ class DetailGamesViewController: UIViewController {
 
     @IBOutlet weak var descGame: UILabel!
 
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
+
+    var isFavorite = false
+
     var presenter: DetailGamePresenter!
+    var realm: Realm!
+
+    func objectExist (id: Int) -> Bool {
+            return realm.object(ofType: GameObject.self, forPrimaryKey: id) != nil
+    }
+
+    // Returns true or false
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         realm = try! Realm()
         presenter = DetailGamePresenter()
 
         self.photo.makeRounded()
@@ -32,9 +45,17 @@ class DetailGamesViewController: UIViewController {
 
 
         if let result = game {
+            if let id = result.id{
+                if(objectExist(id: id)){
+                    favoriteButton.image = UIImage(systemName: "heart.fill")
+                }else{
+                    favoriteButton.image = UIImage(systemName: "heart")
+                }
+            }
+
             gameTitle.text = result.name
             let formate = dateFormatter.date(from: result.released ?? "01-01-2001")
-            name.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(result.rating ?? 0)/\(result.rating_top ?? 0)"
+            name.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(result.rating ?? 0)/5.0"
             presenter.getDetailGame(idGame: result.id!, service: GamesService(), controller: self)
             if(result.background_image != nil){
                 let url = URL(string: result.background_image!)
@@ -45,6 +66,26 @@ class DetailGamesViewController: UIViewController {
             }
         }
     }
+
+    @IBAction func onFavoriteClicked(_ sender: Any) {
+
+        if let game = game {
+            let container = try! Container()
+            try! container.write { transaction in
+                if(!objectExist(id: game.id!)){
+                    transaction.add(game)
+                    favoriteButton.image = UIImage(systemName: "heart.fill")
+                }else{
+                    //transaction.delete(game)
+                    favoriteButton.image = UIImage(systemName: "heart")
+                }
+            }
+        }
+
+
+
+    }
+
 }
 
 extension String {
@@ -64,7 +105,7 @@ extension String {
 extension DetailGamesViewController: DetailGameProtocol{
     func setGame(model: Game) {
         DispatchQueue.main.async {
-            self.descGame.attributedText = model.description?.htmlToAttributedString 
+           // self.descGame.attributedText = model.description.htmlToAttributedString 
         }
 
     }
@@ -75,7 +116,6 @@ extension DetailGamesViewController: DetailGameProtocol{
 
     func startLoading() {
 
-        print("started")
     }
 
     func stopLoading() {
