@@ -11,7 +11,6 @@ import Foundation
 class DetailGamePresenter{
 
     func getDetailGame(idGame: Int, service: GamesService, controller: DetailGameProtocol){
-        print(idGame)
         controller.startLoading()
         service.fetchDetailGame(id: idGame){ (game, error) in
             controller.stopLoading()

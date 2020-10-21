@@ -18,16 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y4h-IZ-Gzw">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Game" id="vRj-HY-Kha">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GameCell" rowHeight="132" id="cHW-Cp-292" customClass="GameTableViewCell" customModule="rawg" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="132"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cHW-Cp-292" id="bSW-JX-UTy" customClass="GamesTableViewCell" customModule="rawg" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
@@ -79,33 +74,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U8V-Zx-O2i">
+                                <rect key="frame" x="20" y="98" width="374" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="99D-35-lzn"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Favorites"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onSegmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Snc-pT-Ei7"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="U8V-Zx-O2i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="114-Ns-Sle"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U8V-Zx-O2i" secondAttribute="trailing" constant="20" id="1Bo-YH-o3Y"/>
+                            <constraint firstItem="U8V-Zx-O2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Dhj-zx-74L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y4h-IZ-Gzw" secondAttribute="trailing" id="HN7-0N-Asx"/>
                             <constraint firstItem="y4h-IZ-Gzw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L2I-io-0go"/>
-                            <constraint firstItem="y4h-IZ-Gzw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XIy-rc-JtJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y4h-IZ-Gzw" secondAttribute="bottom" id="gFT-gj-RVD"/>
+                            <constraint firstItem="y4h-IZ-Gzw" firstAttribute="top" secondItem="U8V-Zx-O2i" secondAttribute="bottom" constant="10" id="l2g-pe-Zmr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rawg" id="JBd-Ac-7b9">
                         <barButtonItem key="backBarButtonItem" title="Back" id="l3i-sI-olu"/>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Profile" image="person.fill" catalog="system" id="1A4-Oy-0JF">
-                                <connections>
-                                    <segue destination="bst-L8-iF3" kind="show" id="SbA-3L-FhC"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="heart.circle.fill" catalog="system" id="tYF-47-MNL">
-                                <connections>
-                                    <segue destination="FVy-Cn-FXK" kind="show" id="pIg-a8-guV"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Profile" image="person.fill" catalog="system" id="1A4-Oy-0JF">
+                            <connections>
+                                <segue destination="bst-L8-iF3" kind="show" id="SbA-3L-FhC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="vRj-HY-Kha" id="NDS-Hc-vUm"/>
+                        <outlet property="segmentedControl" destination="U8V-Zx-O2i" id="ubk-vk-nnt"/>
                         <outlet property="tableView" destination="y4h-IZ-Gzw" id="WwS-Ul-uZv"/>
                         <segue destination="G9Z-lN-LMP" kind="show" identifier="toDetail" id="5EP-zW-bt8"/>
                     </connections>
@@ -251,9 +255,16 @@
                             <constraint firstItem="nV4-2K-VFC" firstAttribute="leading" secondItem="qcP-ku-DzI" secondAttribute="leading" id="w30-MX-WT4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" largeTitleDisplayMode="never" id="CGI-jH-9s6"/>
+                    <navigationItem key="navigationItem" title="Detail" largeTitleDisplayMode="never" id="CGI-jH-9s6">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="1gY-v6-d6v">
+                            <connections>
+                                <action selector="onFavoriteClicked:" destination="G9Z-lN-LMP" id="UeA-li-jAt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descGame" destination="fis-b8-R04" id="Or8-Mf-hEp"/>
+                        <outlet property="favoriteButton" destination="1gY-v6-d6v" id="ivQ-M1-uTk"/>
                         <outlet property="gameTitle" destination="Ozg-A2-935" id="Bu4-pA-99v"/>
                         <outlet property="name" destination="PWk-Mu-f8m" id="FDz-w3-eSd"/>
                         <outlet property="photo" destination="S1c-v3-9l2" id="gzh-aL-zw5"/>
@@ -281,39 +292,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="EgA-jf-6zq">
-            <objects>
-                <tableViewController id="FVy-Cn-FXK" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qDb-Nj-DPd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cfZ-3N-Iko">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cfZ-3N-Iko" id="9Nn-99-n45">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="FVy-Cn-FXK" id="jVJ-SP-ySC"/>
-                            <outlet property="delegate" destination="FVy-Cn-FXK" id="me1-mh-rpB"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="fAL-hd-s0W"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JMV-Ej-4wX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="84" y="863"/>
-        </scene>
     </scenes>
     <resources>
         <image name="dp" width="1455" height="1426"/>
-        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

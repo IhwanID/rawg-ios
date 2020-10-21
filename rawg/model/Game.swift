@@ -13,33 +13,34 @@ struct GameResponse: Codable {
 }
 
 struct Game: Codable {
+    //required
     let id: Int?
-    let slug: String?
-    let description: String?
     let name: String?
-    let released: String?
-    let tba: Bool?
     let background_image: String?
+    let released: String?
     let rating: Double?
-    let rating_top: Double?
-    let ratings: [Ratings]?
-    let ratings_count: Int?
-    let reviews_text_count: Int?
-    let added: Int?
-    let added_by_status: AddedByStatus?
-    let metacritic: Int?
-    let playtime: Int?
-    let suggestions_count: Int?
-    let reviews_count: Int?
-    let saturated_color: String?
-    let dominant_color: String?
-    let platforms: [Platforms]?
-    let parent_platforms: [ParentPlatforms]?
-    let genres: [Genres]?
-    let stores: [Stores]?
-    let clip: Clip?
-    let tags: [Tags]?
-    let short_screenshots: [ShortScreenshots]?
+    //non required
+//    let slug: String?
+//    let description: String?
+//    let tba: Bool?
+//    let ratings: [Ratings]?
+//    let ratings_count: Int?
+//    let reviews_text_count: Int?
+//    let added: Int?
+//    let added_by_status: AddedByStatus?
+//    let metacritic: Int?
+//    let playtime: Int?
+//    let suggestions_count: Int?
+//    let reviews_count: Int?
+//    let saturated_color: String?
+//    let dominant_color: String?
+//    let platforms: [Platforms]?
+//    let parent_platforms: [ParentPlatforms]?
+//    let genres: [Genres]?
+//    let stores: [Stores]?
+//    let clip: Clip?
+//    let tags: [Tags]?
+//    let short_screenshots: [ShortScreenshots]?
 }
 
 struct AddedByStatus: Codable{

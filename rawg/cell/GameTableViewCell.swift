@@ -32,8 +32,28 @@ class GameTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
         let formate = dateFormatter.date(from: model.released ?? "01-01-2001")
-        self.name.text = "\(model.name!)"
-        self.rating.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(model.rating ?? 0)/\(model.rating_top ?? 0)"
+        if let name = model.name {
+            self.name.text = "\(name)"
+        }
+
+        self.rating.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(model.rating ?? 0)/5.0"
+
+    }
+
+    func configure(with model: GameObject){
+        let url = URL(string: model.background_image)
+        self.photo.makeRounded()
+        self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"))
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let formate = dateFormatter.date(from: model.released)
+
+        self.name.text = model.name
+
+
+        self.rating.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(model.rating)/5.0"
 
     }
 }
@@ -49,7 +69,6 @@ extension Date {
 extension UIImageView {
 
     func makeRounded() {
-
         self.layer.borderWidth = 0
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.black.cgColor

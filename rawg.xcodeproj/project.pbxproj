@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		6023D8A52524EAEE0031316E /* DetailGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6023D8A42524EAEE0031316E /* DetailGamePresenter.swift */; };
-		60351738252CF15600946193 /* Game.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60351736252CF15600946193 /* Game.xcdatamodeld */; };
 		6066A5F024BEE5A70018D6E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066A5EF24BEE5A70018D6E3 /* AppDelegate.swift */; };
 		6066A5F224BEE5A70018D6E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066A5F124BEE5A70018D6E3 /* SceneDelegate.swift */; };
 		6066A5F424BEE5A70018D6E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066A5F324BEE5A70018D6E3 /* ViewController.swift */; };
 		6066A5F724BEE5A70018D6E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6066A5F524BEE5A70018D6E3 /* Main.storyboard */; };
 		6066A5F924BEE5A90018D6E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6066A5F824BEE5A90018D6E3 /* Assets.xcassets */; };
 		6066A5FC24BEE5A90018D6E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6066A5FA24BEE5A90018D6E3 /* LaunchScreen.storyboard */; };
+		60729EDF253B88940048A3BC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 60729EDE253B88940048A3BC /* Realm */; };
+		60729EE1253B88940048A3BC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 60729EE0253B88940048A3BC /* RealmSwift */; };
+		60729EE3253B93370048A3BC /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60729EE2253B93370048A3BC /* GameObject.swift */; };
 		6076A0D7251BC2CA008451BC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6076A0D6251BC2CA008451BC /* Kingfisher */; };
 		609888D224CF3C8F00567471 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609888D124CF3C8F00567471 /* Game.swift */; };
 		609888DA24D06C4500567471 /* DetailGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609888D924D06C4500567471 /* DetailGamesViewController.swift */; };
@@ -39,7 +41,6 @@
 
 /* Begin PBXFileReference section */
 		6023D8A42524EAEE0031316E /* DetailGamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGamePresenter.swift; sourceTree = "<group>"; };
-		60351737252CF15600946193 /* Game.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Game.xcdatamodel; sourceTree = "<group>"; };
 		6066A5EC24BEE5A70018D6E3 /* rawg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rawg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6066A5EF24BEE5A70018D6E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6066A5F124BEE5A70018D6E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		6066A5F824BEE5A90018D6E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6066A5FB24BEE5A90018D6E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6066A5FD24BEE5A90018D6E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60729EE2253B93370048A3BC /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		609888D124CF3C8F00567471 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		609888D924D06C4500567471 /* DetailGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGamesViewController.swift; sourceTree = "<group>"; };
 		609888DB24D06F0900567471 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60729EE1253B88940048A3BC /* RealmSwift in Frameworks */,
+				60729EDF253B88940048A3BC /* Realm in Frameworks */,
 				6076A0D7251BC2CA008451BC /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,7 +107,6 @@
 				609888D324D0271800567471 /* cell */,
 				609888D024CF3C6A00567471 /* model */,
 				6066A5EF24BEE5A70018D6E3 /* AppDelegate.swift */,
-				60351736252CF15600946193 /* Game.xcdatamodeld */,
 				6066A5F124BEE5A70018D6E3 /* SceneDelegate.swift */,
 				6066A5F824BEE5A90018D6E3 /* Assets.xcassets */,
 				6066A5FA24BEE5A90018D6E3 /* LaunchScreen.storyboard */,
@@ -116,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				609888D124CF3C8F00567471 /* Game.swift */,
+				60729EE2253B93370048A3BC /* GameObject.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -165,6 +169,8 @@
 			name = rawg;
 			packageProductDependencies = (
 				6076A0D6251BC2CA008451BC /* Kingfisher */,
+				60729EDE253B88940048A3BC /* Realm */,
+				60729EE0253B88940048A3BC /* RealmSwift */,
 			);
 			productName = rawg;
 			productReference = 6066A5EC24BEE5A70018D6E3 /* rawg.app */;
@@ -196,6 +202,7 @@
 			mainGroup = 6066A5E324BEE5A70018D6E3;
 			packageReferences = (
 				6076A0D5251BC2CA008451BC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				60729EDD253B88940048A3BC /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 6066A5ED24BEE5A70018D6E3 /* Products */;
 			projectDirPath = "";
@@ -225,13 +232,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6066A5F424BEE5A70018D6E3 /* ViewController.swift in Sources */,
-				60351738252CF15600946193 /* Game.xcdatamodeld in Sources */,
 				6066A5F024BEE5A70018D6E3 /* AppDelegate.swift in Sources */,
 				6066A5F224BEE5A70018D6E3 /* SceneDelegate.swift in Sources */,
 				60F229CD24F011B300CC82F6 /* Services.swift in Sources */,
 				60BECE1E251DB6A5002FF2DF /* GameTableViewCell.swift in Sources */,
 				6023D8A52524EAEE0031316E /* DetailGamePresenter.swift in Sources */,
 				609888DC24D06F0900567471 /* ProfileViewController.swift in Sources */,
+				60729EE3253B93370048A3BC /* GameObject.swift in Sources */,
 				609888D224CF3C8F00567471 /* Game.swift in Sources */,
 				609888DA24D06C4500567471 /* DetailGamesViewController.swift in Sources */,
 				60F229CB24F010D500CC82F6 /* GamePresenter.swift in Sources */,
@@ -434,6 +441,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		60729EDD253B88940048A3BC /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		6076A0D5251BC2CA008451BC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -445,25 +460,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		60729EDE253B88940048A3BC /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60729EDD253B88940048A3BC /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		60729EE0253B88940048A3BC /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60729EDD253B88940048A3BC /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
 		6076A0D6251BC2CA008451BC /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6076A0D5251BC2CA008451BC /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		60351736252CF15600946193 /* Game.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				60351737252CF15600946193 /* Game.xcdatamodel */,
-			);
-			currentVersion = 60351737252CF15600946193 /* Game.xcdatamodel */;
-			path = Game.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6066A5E424BEE5A70018D6E3 /* Project object */;
 }
