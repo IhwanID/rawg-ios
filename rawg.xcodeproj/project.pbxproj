@@ -22,6 +22,11 @@
 		609888DA24D06C4500567471 /* DetailGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609888D924D06C4500567471 /* DetailGamesViewController.swift */; };
 		609888DC24D06F0900567471 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609888DB24D06F0900567471 /* ProfileViewController.swift */; };
 		60BECE1E251DB6A5002FF2DF /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BECE1D251DB6A5002FF2DF /* GameTableViewCell.swift */; };
+		60C4326225413B2200F92CE3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4326125413B2200F92CE3 /* SearchViewController.swift */; };
+		60C4326425413ECE00F92CE3 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4326325413ECE00F92CE3 /* SearchPresenter.swift */; };
+		60C4326625415B6500F92CE3 /* GameSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4326525415B6500F92CE3 /* GameSearchCell.swift */; };
+		60C4326825416E4700F92CE3 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C4326725416E4700F92CE3 /* GameDetail.swift */; };
+		60C4326A254182B800F92CE3 /* Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C43269254182B800F92CE3 /* Ext.swift */; };
 		60F229CB24F010D500CC82F6 /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F229CA24F010D500CC82F6 /* GamePresenter.swift */; };
 		60F229CD24F011B300CC82F6 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F229CC24F011B300CC82F6 /* Services.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +59,11 @@
 		609888D924D06C4500567471 /* DetailGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGamesViewController.swift; sourceTree = "<group>"; };
 		609888DB24D06F0900567471 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		60BECE1D251DB6A5002FF2DF /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		60C4326125413B2200F92CE3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		60C4326325413ECE00F92CE3 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		60C4326525415B6500F92CE3 /* GameSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSearchCell.swift; sourceTree = "<group>"; };
+		60C4326725416E4700F92CE3 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
+		60C43269254182B800F92CE3 /* Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext.swift; sourceTree = "<group>"; };
 		60F229CA24F010D500CC82F6 /* GamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePresenter.swift; sourceTree = "<group>"; };
 		60F229CC24F011B300CC82F6 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +88,8 @@
 				60F229CC24F011B300CC82F6 /* Services.swift */,
 				60F229CA24F010D500CC82F6 /* GamePresenter.swift */,
 				6023D8A42524EAEE0031316E /* DetailGamePresenter.swift */,
+				60C4326325413ECE00F92CE3 /* SearchPresenter.swift */,
+				60C43269254182B800F92CE3 /* Ext.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -120,6 +132,7 @@
 			children = (
 				609888D124CF3C8F00567471 /* Game.swift */,
 				60729EE2253B93370048A3BC /* GameObject.swift */,
+				60C4326725416E4700F92CE3 /* GameDetail.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -128,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				60BECE1D251DB6A5002FF2DF /* GameTableViewCell.swift */,
+				60C4326525415B6500F92CE3 /* GameSearchCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -146,6 +160,7 @@
 				6066A5F324BEE5A70018D6E3 /* ViewController.swift */,
 				609888D924D06C4500567471 /* DetailGamesViewController.swift */,
 				609888DB24D06F0900567471 /* ProfileViewController.swift */,
+				60C4326125413B2200F92CE3 /* SearchViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -235,10 +250,15 @@
 				6066A5F024BEE5A70018D6E3 /* AppDelegate.swift in Sources */,
 				6066A5F224BEE5A70018D6E3 /* SceneDelegate.swift in Sources */,
 				60F229CD24F011B300CC82F6 /* Services.swift in Sources */,
+				60C4326825416E4700F92CE3 /* GameDetail.swift in Sources */,
+				60C4326A254182B800F92CE3 /* Ext.swift in Sources */,
 				60BECE1E251DB6A5002FF2DF /* GameTableViewCell.swift in Sources */,
 				6023D8A52524EAEE0031316E /* DetailGamePresenter.swift in Sources */,
+				60C4326225413B2200F92CE3 /* SearchViewController.swift in Sources */,
 				609888DC24D06F0900567471 /* ProfileViewController.swift in Sources */,
 				60729EE3253B93370048A3BC /* GameObject.swift in Sources */,
+				60C4326625415B6500F92CE3 /* GameSearchCell.swift in Sources */,
+				60C4326425413ECE00F92CE3 /* SearchPresenter.swift in Sources */,
 				609888D224CF3C8F00567471 /* Game.swift in Sources */,
 				609888DA24D06C4500567471 /* DetailGamesViewController.swift in Sources */,
 				60F229CB24F010D500CC82F6 /* GamePresenter.swift in Sources */,

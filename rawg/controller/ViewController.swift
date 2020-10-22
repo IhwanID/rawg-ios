@@ -20,10 +20,11 @@ class ViewController: UIViewController, UISearchBarDelegate {
     var games = [Game]()
     var favoritesGame = [GameObject]()
     var realm: Realm!
-    lazy var rowsToDisplay = games
-    
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        favoritesGame = Array(realm.objects(GameObject.self))
+        tableView.reloadData()
+    }
     func activityIndicator(){
         loading = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         loading.style = UIActivityIndicatorView.Style.large
@@ -42,22 +43,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
         tableView.reloadData()
     }
-
-//    func searchBarSearchButtonClicked( _ searchBar: UISearchBar){
-//        searchBar.resignFirstResponder()
-//        presenter.searchGame(searchText: searchBar.text!,service: GamesService(), controller: self)
-//
-//    }
-
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.isEmpty {
-//            DispatchQueue.main.async {
-//                searchBar.resignFirstResponder()
-//            }
-//            presenter.getAllGame(service: GamesService(), controller: self)
-//        }
-//
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +55,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
         presenter = GamePresenter()
         presenter.getAllGame(service: GamesService(), controller: self)
     }
-
-
 }
 
 extension ViewController: GameProtocol{
@@ -90,15 +73,14 @@ extension ViewController: GameProtocol{
         }
     }
     
-    func setPhoto(model: [Game]) {
+    func setGame(model: [Game]) {
         DispatchQueue.main.async {
             self.games = model
-            self.rowsToDisplay = self.games
             self.tableView.reloadData()
         }
     }
     
-    func errorPhoto(error: Error) {
+    func errorGame(error: Error) {
         print(error)
     }
     
@@ -109,26 +91,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-
-        if rowsToDisplay.count == 0 {
-            self.tableView.setEmptyMessage("No Game")
-        } else {
-            self.tableView.restore()
-        }
-
         switch(segmentedControl.selectedSegmentIndex)
         {
         case 0:
-            return rowsToDisplay.count
+            if games.count == 0 {
+                self.tableView.setEmptyMessage("No Game")
+            } else {
+                self.tableView.restore()
+            }
+            return games.count
             
         case 1:
+            if favoritesGame.count == 0 {
+                self.tableView.setEmptyMessage("No Favorite Game")
+            } else {
+                self.tableView.restore()
+            }
             return favoritesGame.count
 
 
         default:
             break
         }
-        return rowsToDisplay.count
+        return games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -140,7 +125,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configure(with: games[indexPath.row])
             return cell
         case 1:
-            cell.configure(with: favoritesGame[indexPath.row])
+            cell.configure(with: Game(id: favoritesGame[indexPath.row].id, name: favoritesGame[indexPath.row].name, background_image: favoritesGame[indexPath.row].background_image, released: favoritesGame[indexPath.row].released, rating: favoritesGame[indexPath.row].rating))
             return cell
 
         default:
@@ -177,7 +162,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             }else{
                 guard let object = sender as? GameObject else { return }
                 let vc = segue.destination as! DetailGamesViewController
-                vc.gameObject = object
+                vc.game = Game(id: object.id, name: object.name, background_image: object.background_image, released: object.released, rating: object.rating)
             }
            
             

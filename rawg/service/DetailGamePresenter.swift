@@ -27,6 +27,6 @@ class DetailGamePresenter{
 protocol DetailGameProtocol {
     func startLoading()
     func stopLoading()
-    func setGame(model: Game)
+    func setGame(model: GameDetail)
     func errorGame(error: Error)
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class GamesService{
 
-    func searchGames(searchtext: String?,completion: @escaping ([Game], Error?) -> ()){
+    func searchGames(searchtext: String?,completion: @escaping ([Game], Error?) -> Void){
 
         guard let text = searchtext, !text.isEmpty else {
             return
@@ -24,8 +24,6 @@ class GamesService{
                 return
             }
 
-            //convert
-
             var result: GameResponse?
             do {
                 result = try JSONDecoder().decode(GameResponse.self, from: data)
@@ -38,14 +36,14 @@ class GamesService{
             }
 
 
-             completion(finalResult.results, error)
+            completion(finalResult.results, error)
 
 
         }).resume()
     }
 
 
-    func loadGames(completion: @escaping ([Game], Error?) -> ()){
+    func loadGames(completion: @escaping ([Game], Error?) -> Void){
         URLSession.shared.dataTask(with: URL(string: "https://api.rawg.io/api/games")!, completionHandler: {data, response, error in
             guard let data = data, error == nil else{
                 return
@@ -70,15 +68,15 @@ class GamesService{
         
     }
 
-    func fetchDetailGame(id: Int,completion: @escaping (Game, Error?) -> () ){
+    func fetchDetailGame(id: Int,completion: @escaping (GameDetail, Error?) -> Void ){
         URLSession.shared.dataTask(with: URL(string: "https://api.rawg.io/api/games/\(id)")!, completionHandler: {data, response, error in
             guard let data = data, error == nil else{
                 return
             }
 
-            var result: Game?
+            var result: GameDetail?
             do {
-                result = try JSONDecoder().decode(Game.self, from: data)
+                result = try JSONDecoder().decode(GameDetail.self, from: data)
 
             } catch{
                 print("error")

@@ -16,8 +16,6 @@ class DetailGamesViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     var game: Game?
     
-    var gameObject: GameObject?
-    
     @IBOutlet weak var gameTitle: UILabel!
 
     @IBOutlet weak var descGame: UILabel!
@@ -30,105 +28,79 @@ class DetailGamesViewController: UIViewController {
     var realm: Realm!
 
     func objectExist (id: Int) -> Bool {
-            return realm.object(ofType: GameObject.self, forPrimaryKey: id) != nil
+        return realm.object(ofType: GameObject.self, forPrimaryKey: id) != nil
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         realm = try! Realm()
+        realm = try! Realm()
         presenter = DetailGamePresenter()
 
         self.photo.makeRounded()
-        
-        
-        if let fav = gameObject{
-            
-                if(objectExist(id: fav.id)){
-                    favoriteButton.image = UIImage(systemName: "heart.fill")
-                }else{
-                    favoriteButton.image = UIImage(systemName: "heart")
-                }
-            
-            setupLayout(id: fav.id, title: fav.name, released: fav.released, background_image: fav.background_image, rating: fav.rating)
-            
-        }
-        
+
         if let result = game {
             if let id = result.id{
+                presenter.getDetailGame(idGame: id, service: GamesService(), controller: self)
                 if(objectExist(id: id)){
                     favoriteButton.image = UIImage(systemName: "heart.fill")
                 }else{
                     favoriteButton.image = UIImage(systemName: "heart")
                 }
             }
-        
-            setupLayout(id: result.id!, title: result.name!, released: result.released!, background_image: result.background_image!, rating: result.rating!)
+
+            setupLayout(id: result.id!, title: result.name!, released: result.released!, background_image: result.background_image, rating: result.rating!)
             
         }
     }
 
-    func setupLayout(id:Int, title: String, released: String, background_image: String, rating: Double){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        gameTitle.text = title
-        let formate = dateFormatter.date(from: released)
-        name.text = "🗓\(formate?.getFormattedDate(format: "dd MMM yyyy") ?? "-") \n⭐️ \(rating)/5.0"
+    func setupLayout(id:Int, title: String, released: String, background_image: String?, rating: Double){
+
+        name.text = title
+        gameTitle.text = "🗓\(released.toDate()?.toString() ?? "-") \n⭐️ \(rating)/5.0"
         presenter.getDetailGame(idGame: id, service: GamesService(), controller: self)
-        if(background_image != nil){
-            let url = URL(string: background_image)
+        if let background = background_image{
+            let url = URL(string: background)
             self.photo.makeRounded()
             self.photo.kf.setImage(with: url,placeholder: UIImage(named: "placeholder"))
         }else{
             self.photo.image = UIImage(named: "placeholder")
         }
+
     }
     @IBAction func onFavoriteClicked(_ sender: Any) {
 
-        if let game = game {
+        if let game = game{
             let container = try! Container()
             try! container.write { transaction in
-                if(!objectExist(id: game.id!)){
-                    transaction.add(game)
-                    favoriteButton.image = UIImage(systemName: "heart.fill")
-                }else{
-                    let objectsToDelete =  realm.objects(GameObject.self).filter("NOT id IN %@", game.id!)
-                    realm.delete(objectsToDelete)
-                    favoriteButton.image = UIImage(systemName: "heart")
+                if let gameId = game.id{
+                    if(!objectExist(id: gameId)){
+                        transaction.add(game)
+                        favoriteButton.image = UIImage(systemName: "heart.fill")
+                    }else{
+                        let objectsToDelete =  realm.object(ofType: GameObject.self, forPrimaryKey: gameId)!
+                        realm.delete(objectsToDelete)
+                        favoriteButton.image = UIImage(systemName: "heart")
+                    }
                 }
+
             }
         }
 
-
-
     }
 
 }
 
-extension String {
-    var htmlToAttributedString: NSAttributedString? {
-        guard let data = data(using: .utf8) else { return nil }
-        do {
-            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
-        } catch {
-            return nil
-        }
-    }
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
-    }
-}
 
 extension DetailGamesViewController: DetailGameProtocol{
-    func setGame(model: Game) {
+    func setGame(model: GameDetail) {
         DispatchQueue.main.async {
-           // self.descGame.attributedText = model.description.htmlToAttributedString 
+            self.descGame.attributedText = model.description?.htmlToAttributedString
         }
-
     }
 
     func errorGame(error: Error) {
-        print(error)
+        
     }
 
     func startLoading() {
